@@ -1,0 +1,177 @@
+[
+	{
+		"name": "$construct",
+		"ident": 1,
+		"order": 1,
+		"pvardefs": [
+
+		],
+		"lvardefs": [
+			{
+				"name": "DateReceived",
+				"order": 1,
+				"type": "kDate",
+				"subtype": "kDatetime",
+				"sublen": 0
+			},
+			{
+				"name": "Message",
+				"order": 2,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000
+			},
+			{
+				"name": "Type",
+				"order": 3,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000
+			}
+		]
+	},
+	{
+		"name": "$destruct",
+		"ident": 2,
+		"order": 2,
+		"pvardefs": [
+
+		],
+		"lvardefs": [
+
+		],
+		"empty": true
+	},
+	{
+		"name": "clickBtnConnect",
+		"ident": 0,
+		"order": 3,
+		"pvardefs": [
+
+		],
+		"lvardefs": [
+			{
+				"name": "Content",
+				"order": 4,
+				"type": "kBinary",
+				"subtype": 0,
+				"sublen": 100000000
+			},
+			{
+				"name": "Headers",
+				"order": 1,
+				"type": "kList",
+				"subtype": "",
+				"sublen": 0
+			},
+			{
+				"name": "Key",
+				"order": 2,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000
+			},
+			{
+				"name": "Value",
+				"order": 3,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000
+			}
+		]
+	},
+	{
+		"name": "clickBtnSend",
+		"ident": 3,
+		"order": 4,
+		"pvardefs": [
+			{
+				"name": "pBinary",
+				"order": 1,
+				"type": "kBoolean",
+				"subtype": 0,
+				"sublen": 0,
+				"param": 1,
+				"initval": "kFalse"
+			}
+		],
+		"lvardefs": [
+
+		]
+	},
+	{
+		"name": "$receiveConnect",
+		"ident": 7,
+		"order": 5,
+		"pvardefs": [
+
+		],
+		"lvardefs": [
+
+		]
+	},
+	{
+		"name": "$receiveDisconnect",
+		"ident": 8,
+		"order": 6,
+		"pvardefs": [
+
+		],
+		"lvardefs": [
+
+		]
+	},
+	{
+		"name": "$receiveMessage",
+		"ident": 4,
+		"order": 7,
+		"pvardefs": [
+			{
+				"name": "pMessage",
+				"order": 2,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000,
+				"param": 1
+			}
+		],
+		"lvardefs": [
+
+		]
+	},
+	{
+		"name": "$receiveData",
+		"ident": 6,
+		"order": 8,
+		"pvardefs": [
+			{
+				"name": "pData",
+				"order": 2,
+				"type": "kBinary",
+				"subtype": 0,
+				"sublen": 100000000,
+				"param": 1
+			}
+		],
+		"lvardefs": [
+			{
+				"name": "Message",
+				"order": 1,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000
+			}
+		]
+	},
+	{
+		"name": "$setButtons",
+		"ident": 5,
+		"order": 9,
+		"pvardefs": [
+
+		],
+		"lvardefs": [
+
+		]
+	}
+]

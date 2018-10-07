@@ -1,0 +1,15 @@
+If iHTTPClientWorker.$state=kWorkerStateRunning&iHTTPClientWorker.$errorcode=0
+	If pBinary
+		Do iHTTPClientWorker.$wssend(chartoutf8(iMessage)) Returns #F
+	Else
+		Do iHTTPClientWorker.$wssend(iMessage) Returns #F
+	End If
+	If flag false
+		Send to trace log {Failed to send [iMessage]}
+	End If
+Else If iHTTPClientWorker.$state=kWorkerStateComplete
+	Send to trace log {Socket is disconnected}
+Else
+	Send to trace log {Websocket is in error: [iHTTPClientWorker.$errortext]}
+End If
+Do $cinst.$setButtons()

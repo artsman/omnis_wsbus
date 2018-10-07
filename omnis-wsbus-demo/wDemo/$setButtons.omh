@@ -1,0 +1,11 @@
+If iHTTPClientWorker.$state=kWorkerStateRunning
+	Calculate iBtnConnectRef.$text as 'Disconnect'
+Else
+	Calculate iBtnConnectRef.$text as 'Connect'
+End If
+
+Calculate iBtnSendRef.$enabled as iHTTPClientWorker.$state=kWorkerStateRunning
+Calculate iBtnSendBinaryRef.$enabled as iHTTPClientWorker.$state=kWorkerStateRunning
+
+Calculate iError as iHTTPClientWorker.$errortext
+Redraw {Error}

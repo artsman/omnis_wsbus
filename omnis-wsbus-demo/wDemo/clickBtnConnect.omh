@@ -1,0 +1,15 @@
+
+If iHTTPClientWorker.$state=kWorkerStateRunning
+	Do iHTTPClientWorker.$cancel()
+Else
+	;  Clear received list before connect
+	Do iReceived.$clear()
+	Redraw (Refresh now) {iReceived}
+	
+	Do Headers.$define(Key,Value)
+	Do Headers.$add("content-type","text/plain")
+	Do iHTTPClientWorker.$init(iAddress,kOW3httpMethodGet,Headers,Content)
+	Do iHTTPClientWorker.$start()
+End If
+
+Do $cinst.$setButtons()

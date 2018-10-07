@@ -1,0 +1,13 @@
+*.DS_STORE
+*.lbs
+*.pyc
+*.pyo
+.idea/
+.venv
+omnis_wsbus.egg-info/
+ssl/
+ssl_root/
+dist/
+build/
+profiles/
+venv/

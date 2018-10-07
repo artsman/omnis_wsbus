@@ -1,0 +1,4 @@
+Send to trace log {Connect}
+If iConnectCallbackRef
+	Do iConnectCallbackRef.[iConnectMethod]()
+End If

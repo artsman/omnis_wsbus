@@ -1,0 +1,3 @@
+Set reference iMessageCallbackRef to pRef
+Calculate iMessageMethod as pMessageMethod
+Calculate iDataMethod as pDataMethod

@@ -1,0 +1,24 @@
+[req]
+default_bits = 4096
+prompt = no
+default_md = sha256
+distinguished_name = dn
+
+[dn]
+C=CA
+ST=Province
+L=City
+O=EurOmnis
+OU=Developers
+emailAddress=youremail@domain.com
+CN=localhost
+
+[req_ext]
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = localhost
+IP.1 = 127.0.0.1
+IP.2 = 0.0.0.0

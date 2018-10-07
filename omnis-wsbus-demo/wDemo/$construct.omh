@@ -1,0 +1,8 @@
+Calculate iHTTPClientWorker.$timeout as 0
+Calculate iHTTPClientWorker.$wspinginterval as 0
+Calculate iHTTPClientWorker.$wspongtimeout as 0
+Do iHTTPClientWorker.$setConnectCallback($cinst().$ref,'$receiveConnect')
+Do iHTTPClientWorker.$setDisconnectCallback($cinst().$ref,'$receiveDisconnect')
+Do iHTTPClientWorker.$setMessageCallback($cinst().$ref,'$receiveMessage','$receiveData')
+
+Do iReceived.$define(DateReceived,Type,Message)

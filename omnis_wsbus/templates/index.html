@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket demo</title>
+    <style type="text/css">
+        body {
+            font-family: "Courier New", sans-serif;
+            text-align: center;
+        }
+        .state {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+<div class="state">
+    <span class="users">?</span> online
+</div>
+<h3>Messages</h3>
+<div id="message_container" class="message_contaner">
+</div>
+<script>
+  var users = document.querySelector('.users'),
+    websocket = new WebSocket("wss://{{ host }}/");
+
+  websocket.binaryType = 'arraybuffer';  // Easier UTF-8 conversion
+
+  websocket.onmessage = function (event) {
+    var data = event.data;
+    if (data instanceof ArrayBuffer) {
+      var enc = new TextDecoder("utf-8");
+      data = enc.decode(new Uint8Array(data));
+    }
+    data = JSON.parse(data);
+    if (!data) {
+      console.error("unable to parse JSON", data);
+      return;
+    }
+
+    switch (data.type) {
+      case 'users':
+        // User message can be interpretted
+        users.textContent = (data.count.toString() + " user" + (data.count == 1 ? "" : "s"));
+        break;
+      default:
+        // All other messages can just be displayed
+        var element = document.getElementById("message_container");
+        var para = document.createElement("p");
+        var node = document.createTextNode(JSON.stringify(data));
+        para.appendChild(node);
+        element.insertBefore(para, element.childNodes[0]);
+    }
+  };
+</script>
+</body>
+</html>

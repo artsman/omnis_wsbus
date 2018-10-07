@@ -1,0 +1,83 @@
+{
+	"classtype": "kObjectclass",
+	"internalversion": 68,
+	"superclass": ".OW3.OW3 Worker Objects\\HTTPClientWorker",
+	"designtaskname": "Startup_Task",
+	"cvardefs": [
+
+	],
+	"ivardefs": [
+		{
+			"name": "iConnectCallbackRef",
+			"order": 5,
+			"type": "kItemref",
+			"subtype": "",
+			"sublen": 0
+		},
+		{
+			"name": "iConnectMethod",
+			"order": 7,
+			"type": "kCharacter",
+			"subtype": "kSimplechar",
+			"sublen": 100000000
+		},
+		{
+			"name": "iDataMethod",
+			"order": 4,
+			"type": "kCharacter",
+			"subtype": "kSimplechar",
+			"sublen": 100000000
+		},
+		{
+			"name": "iDisconnectCallbackRef",
+			"order": 6,
+			"type": "kItemref",
+			"subtype": "",
+			"sublen": 0
+		},
+		{
+			"name": "iDisconnectMethod",
+			"order": 8,
+			"type": "kCharacter",
+			"subtype": "kSimplechar",
+			"sublen": 100000000
+		},
+		{
+			"name": "iMessageCallbackRef",
+			"order": 2,
+			"type": "kItemref",
+			"subtype": "",
+			"sublen": 0
+		},
+		{
+			"name": "iMessageMethod",
+			"order": 3,
+			"type": "kCharacter",
+			"subtype": "kSimplechar",
+			"sublen": 100000000
+		},
+		{
+			"name": "iReceived",
+			"order": 1,
+			"type": "kList",
+			"subtype": "",
+			"sublen": 0
+		}
+	],
+	"properties": {
+		"collectperformancedata": false,
+		"componenticon": 0,
+		"componenttype": "kCompStoreHidden",
+		"createdate": "2018-10-05 11:04:57",
+		"desc": "",
+		"editor": "",
+		"editordata": "",
+		"external": true,
+		"issupercomponent": false,
+		"moddate": "2018-10-07 09:47:03",
+		"selfcontained": false,
+		"showascheckedout": false,
+		"userinfo": "",
+		"version": ""
+	}
+}

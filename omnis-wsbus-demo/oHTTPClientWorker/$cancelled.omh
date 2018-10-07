@@ -1,0 +1,4 @@
+Send to trace log {Cancelled}
+If iDisconnectCallbackRef
+	Do iDisconnectCallbackRef.[iDisconnectMethod]()
+End If

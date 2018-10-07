@@ -1,0 +1,4 @@
+Send to trace log {window message - [pMessage]}
+Do iReceived.$addbefore(1,#D,'text',pMessage)
+Redraw (Refresh now) {iReceived}
+Do $cinst.$setButtons()

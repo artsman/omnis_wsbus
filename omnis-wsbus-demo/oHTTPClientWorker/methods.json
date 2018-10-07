@@ -1,0 +1,229 @@
+[
+	{
+		"name": "$ws_onconnect",
+		"ident": 0,
+		"order": 1,
+		"pvardefs": [
+			{
+				"name": "pRow",
+				"order": 1,
+				"type": "kRow",
+				"subtype": "",
+				"sublen": 0,
+				"param": 1
+			}
+		],
+		"lvardefs": [
+			{
+				"name": "headers",
+				"order": 2,
+				"type": "kList",
+				"subtype": "",
+				"sublen": 0
+			}
+		]
+	},
+	{
+		"name": "$ws_onmessage",
+		"ident": 1,
+		"order": 2,
+		"pvardefs": [
+			{
+				"name": "pRow",
+				"order": 1,
+				"type": "kRow",
+				"subtype": "",
+				"sublen": 0,
+				"param": 1
+			}
+		],
+		"lvardefs": [
+			{
+				"name": "Data",
+				"order": 3,
+				"type": "kBinary",
+				"subtype": 0,
+				"sublen": 100000000
+			},
+			{
+				"name": "Message",
+				"order": 2,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000
+			},
+			{
+				"name": "Ref",
+				"order": 4,
+				"type": "kItemref",
+				"subtype": "",
+				"sublen": 0
+			}
+		]
+	},
+	{
+		"name": "$completed",
+		"ident": 2,
+		"order": 3,
+		"pvardefs": [
+			{
+				"name": "pRow",
+				"order": 1,
+				"type": "kRow",
+				"subtype": "",
+				"sublen": 0,
+				"param": 1
+			}
+		],
+		"lvardefs": [
+			{
+				"name": "Headers",
+				"order": 2,
+				"type": "kList",
+				"subtype": "",
+				"sublen": 0
+			},
+			{
+				"name": "Message",
+				"order": 3,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000
+			}
+		]
+	},
+	{
+		"name": "$cancelled",
+		"ident": 3,
+		"order": 4,
+		"pvardefs": [
+			{
+				"name": "pRow",
+				"order": 2,
+				"type": "kRow",
+				"subtype": "",
+				"sublen": 0,
+				"param": 1
+			}
+		],
+		"lvardefs": [
+			{
+				"name": "Headers",
+				"order": 1,
+				"type": "kList",
+				"subtype": "",
+				"sublen": 0
+			}
+		]
+	},
+	{
+		"name": "$construct",
+		"ident": 4,
+		"order": 5,
+		"pvardefs": [
+
+		],
+		"lvardefs": [
+			{
+				"name": "DateReceived",
+				"order": 1,
+				"type": "kDate",
+				"subtype": "kDatetime",
+				"sublen": 0
+			},
+			{
+				"name": "Message",
+				"order": 2,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000
+			}
+		]
+	},
+	{
+		"name": "$setMessageCallback",
+		"ident": 5,
+		"order": 6,
+		"pvardefs": [
+			{
+				"name": "pRef",
+				"order": 1,
+				"type": "kItemref",
+				"subtype": "",
+				"sublen": 0,
+				"param": 1
+			},
+			{
+				"name": "pMessageMethod",
+				"order": 2,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000,
+				"param": 2
+			},
+			{
+				"name": "pDataMethod",
+				"order": 3,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000,
+				"param": 3
+			}
+		],
+		"lvardefs": [
+
+		]
+	},
+	{
+		"name": "$setConnectCallback",
+		"ident": 6,
+		"order": 7,
+		"pvardefs": [
+			{
+				"name": "pCallbackRef",
+				"order": 1,
+				"type": "kItemref",
+				"subtype": "",
+				"sublen": 0,
+				"param": 1
+			},
+			{
+				"name": "pMethod",
+				"order": 2,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000,
+				"param": 2
+			}
+		],
+		"lvardefs": [
+
+		]
+	},
+	{
+		"name": "$setDisconnectCallback",
+		"ident": 7,
+		"order": 8,
+		"pvardefs": [
+			{
+				"name": "pCallbackRef",
+				"order": 1,
+				"type": "kItemref",
+				"subtype": "",
+				"sublen": 0,
+				"param": 1
+			},
+			{
+				"name": "pMethod",
+				"order": 2,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000,
+				"param": 2
+			}
+		],
+		"lvardefs": [
+
+		]
+	}
+]

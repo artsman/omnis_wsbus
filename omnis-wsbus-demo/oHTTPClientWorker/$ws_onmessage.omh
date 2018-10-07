@@ -1,0 +1,24 @@
+Do pRow.$cols.$findname('message') Returns Ref
+If Ref
+	Calculate Message as pRow.message
+	
+	Send to trace log {message - [Message]}
+	If iMessageCallbackRef
+		Do iMessageCallbackRef.[iMessageMethod](Message)
+	End If
+Else
+	If pRow.utf8
+		Calculate Message as utf8tochar(pRow.data)
+		
+		Send to trace log {message (utf8) - [Message]}
+		If iMessageCallbackRef
+			Do iMessageCallbackRef.[iMessageMethod](Message)
+		End If
+	Else
+		Calculate Data as pRow.data
+		Send to trace log {data - [Data]}
+		If iMessageCallbackRef
+			Do iMessageCallbackRef.[iDataMethod](Data)
+		End If
+	End If
+End If

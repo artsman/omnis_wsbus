@@ -1,0 +1,4 @@
+recursive-include omnis_wsbus/ssl *
+recursive-include omnis_wsbus/ssl_root *
+recursive-include omnis_wsbus/static *
+recursive-include omnis_wsbus/templates *

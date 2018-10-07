@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+# NOTE: ./build_ca_cert must be run before this script can be run.
+
+openssl_bin=openssl
+
+# SSL Properties
+key_bits=4096
+dh_bits=4096
+days=365
+
+# Temporal details
+password=dummypassword
+
+# Root location
+root_certificate_file=omnis_wsbus/ssl_root/root.crt
+root_key_file=omnis_wsbus/ssl_root/root.key
+srl_file=omnis_wsbus/ssl_root/root.srl
+
+# Certificate file names
+certificate_file=omnis_wsbus/ssl/server.crt
+key_file=omnis_wsbus/ssl/server.key
+csr_file=omnis_wsbus/ssl/server.csr
+dh_file=omnis_wsbus/ssl/dhparam.pem
+
+# Generate a key
+echo "Generating key request for $domain"
+$openssl_bin genrsa -aes256 -passout pass:$password -out "$key_file" $key_bits -noout
+
+# Remove passphrase from the key.
+echo "Removing passphrase from key"
+$openssl_bin rsa -in "$key_file" -passin pass:$password -out "$key_file"
+
+# Create the request
+echo "Creating certificate signing request"
+$openssl_bin req -new -extensions req_ext -key "$key_file" -out "$csr_file" -passin pass:$password -config self_cert.cnf
+
+# Create the certificate
+echo "Creating certificate"
+$openssl_bin x509 -req -sha256 -extensions req_ext -extfile self_cert.cnf -in "$csr_file" -CA "$root_certificate_file" -CAkey "$root_key_file" -CAcreateserial -out "$certificate_file" -days $days
+
+# Generate Diffie-Hellman parameter
+echo "Creating Diffie-Hellman Parameter"
+$openssl_bin dhparam -dsaparam -out "$dh_file" $dh_bits
+
+echo "Cleanup"
+rm $csr_file
+rm $srl_file
+
+echo Done! 

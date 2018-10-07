@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+#
+# Add to trust chain
+#
+# OS X (Safari and Chrome): sudo security add-trusted-cert -d -r trustRoot -k "/Library/Keychains/System.keychain" root.crt
+# Firefox: Options/Preferences -> Privacy & Security -> Certificates: View Certificates -> Import -> Select root.crt
+#
+
+# Outputs
+root_certificate_file="omnis_wsbus/ssl_root/root.crt"
+root_key_file="omnis_wsbus/ssl_root/root.key"
+
+# SSL Properties
+key_bits=4096
+days=365
+
+# CA details
+domain=localhost
+country=CA
+state=Province
+locality=Cty
+organization="EurOmnis"
+organizational_unit="Developers"
+email=name@domain.com
+
+# Temporal details
+password=dummypassword
+subject="/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizational_unit/CN=$domain/emailAddress=$email"
+
+# Generate a CA root key
+echo "Generating key request for CA"
+openssl genrsa -aes256 -passout pass:$password -out "$root_key_file" $key_bits -noout
+
+# Remove passphrase from the CA root key.
+echo "Removing passphrase from CA key"
+openssl rsa -in "$root_key_file" -passin pass:$password -out "$root_key_file"
+
+# Generate a CA root key
+echo "Generating key request for CA"
+openssl genrsa -aes256 -passout pass:$password -out "$root_key_file" $key_bits -noout
+
+# Remove passphrase from the CA root key.
+echo "Removing passphrase from CA key"
+openssl rsa -in "$root_key_file" -passin pass:$password -out "$root_key_file"
+
+# Create a CA root certificate
+echo "Creating CA certificate"
+openssl req -x509 -new -sha256 -key "$root_key_file" -days $days -out  "$root_certificate_file" -subj "$subject"

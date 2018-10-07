@@ -1,0 +1,5 @@
+Send to trace log {Completed}
+Calculate Headers as pRow.responseHeaders
+If iDisconnectCallbackRef
+	Do iDisconnectCallbackRef.[iDisconnectMethod]()
+End If

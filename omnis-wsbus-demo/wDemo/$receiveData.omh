@@ -1,0 +1,5 @@
+Calculate Message as utf8tochar(pData)
+Send to trace log {window data - [Message]}
+Do iReceived.$addbefore(1,#D,'binary',Message)
+Redraw (Refresh now) {iReceived}
+Do $cinst.$setButtons()
