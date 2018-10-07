@@ -2,14 +2,16 @@
 # -*- coding: utf-8 -*-
 import os
 
-from click import INT, STRING, group, option, argument
+from click import INT, STRING, group, option, argument, version_option, echo
+
+from .constants import VERSION
 
 @group()
+@version_option(version=VERSION)
 def main():
     """
     Main command group.  Using groups in anticipation of future options.
     """
-
 
 @main.command()
 @option('--socket-port', type=INT, default=6789, help="Port for WebSocket use")
@@ -42,30 +44,30 @@ def run(socket_port=None, status_port=None, cert=None, key=None, dhparam=None):
     else:
         cert = resource_path('ssl/server.crt')
         if not os.path.exists(cert):
-            print("Internal self-signed public certificate has not been generated.  Please "
-                  "run `./build_ca_cert` followed by `./build_self_cert`.")
+            echo("Internal self-signed public certificate has not been generated.  Please "
+                 "run `./build_ca_cert` followed by `./build_self_cert`.")
 
     if key is not None:
         key = os.path.realpath(key)
     else:
         key = resource_path('ssl/server.key')
         if not os.path.exists(key):
-            print("Internal self-signed private key has not been generated.  Please "
-                  "run `./build_ca_cert` followed by `./build_self_cert`.")
+            echo("Internal self-signed private key has not been generated.  Please "
+                 "run `./build_ca_cert` followed by `./build_self_cert`.")
 
     if dhparam is not None:
         dhparam = os.path.realpath(dhparam)
     else:
         dhparam = resource_path('ssl/dhparam.pem')
         if not os.path.exists(key):
-            print("Internal Diffie-Hellman parameter has not been generated.  Please "
-                  "run `./build_ca_cert` followed by `./build_self_cert`.")
+            echo("Internal Diffie-Hellman parameter has not been generated.  Please "
+                 "run `./build_ca_cert` followed by `./build_self_cert`.")
 
     if not os.path.exists(cert):
-        print(u"Unable to locate certificate: ", cert)
+        echo(u"Unable to locate certificate: ", cert)
 
     if not os.path.exists(key):
-        print(u"Unable to locate key: ", cert)
+        echo(u"Unable to locate key: ", cert)
 
     ssl_context = SSLContext(PROTOCOL_TLS_SERVER)
     ssl_context.load_cert_chain(cert, key)
@@ -95,8 +97,8 @@ def watch(url=None, cafile=None):
     if cafile is None:
         cafile = resource_path('ssl_root/root.crt')
         if not os.path.exists(cafile):
-            print("Internal self-signed root CA certificate has not been generated.  Please "
-                  "run `./build_ca_cert` followed by `./build_self_cert`.")
+            echo("Internal self-signed root CA certificate has not been generated.  Please "
+                 "run `./build_ca_cert` followed by `./build_self_cert`.")
 
     # Load SSL
     ssl_context = SSLContext(PROTOCOL_TLS_CLIENT)
@@ -119,8 +121,8 @@ def certs(path):
 
     cert_path = os.path.join(path, 'server.crt')
     shutil.copyfile(resource_path('ssl/server.crt'), cert_path)
-    print(cert_path)
+    echo(cert_path)
     root_path = os.path.join(path, 'root.crt')
     shutil.copyfile(resource_path('ssl_root/root.crt'), root_path)
-    print(root_path)
-    print('Done!')
+    echo(root_path)
+    echo('Done!')
